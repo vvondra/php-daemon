@@ -86,6 +86,11 @@ class DaemonTest extends PHPUnit_Framework_TestCase {
 		$this->assertFileNotExists($pidfile);
 	}
 
+	public function testIsProcessRunningEmptyPid() {
+		$daemon = new EmptyDaemon();
+		$this->assertEquals(false, self::getMethod('isProcessRunning')->invokeArgs($daemon, array(0)));
+	}
+
 	public function testGetDaemonName() {
 		$this->assertEquals('emptydaemon', \PHPDaemon\Daemon::getDaemonName(new EmptyDaemon));
 		$this->assertEquals('phpdaemondaemon', \PHPDaemon\Daemon::getDaemonName());
