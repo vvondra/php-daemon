@@ -175,7 +175,7 @@ abstract class Daemon {
 					break;
 				case 'status':
 					$status = $d->status();
-					echo static::getDaemonName() . " is" . ($status ? " " : " not ") . "running\n";
+					echo static::getDaemonName($d) . " is" . ($status ? " " : " not ") . "running\n";
 					break;
 				default:
 					echo "Unknown command " . $argv[1] . "\n";
@@ -189,10 +189,17 @@ abstract class Daemon {
 	}
 
 	/**
+	 * Returns sanitized name of provided daemon class or calling class
+	 * @param Daemon $d
 	 * @return string
 	 */
-	public static function getDaemonName() {
-		return strtolower(preg_replace('/[^A-Za-z]/', '', get_called_class()));
+	public static function getDaemonName(Daemon $d = null) {
+		if (is_null($d)) {
+			$name = get_called_class();
+		} else {
+			$name = get_class($d);
+		}
+		return strtolower(preg_replace('/[^A-Za-z]/', '', $name));
 	}
 }
 
