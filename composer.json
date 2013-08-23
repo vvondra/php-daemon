@@ -13,6 +13,6 @@
         "ext-posix": "*"
     },
     "autoload": {
-        "files": ["Daemon.php", "DaemonException.phpon.php"]
+        "files": ["Daemon.php", "DaemonException.php"]
     }
 }
