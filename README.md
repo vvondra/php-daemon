@@ -1,6 +1,8 @@
 A simple unix daemon in PHP
 ==========
 
+[![Build Status](https://travis-ci.org/vvondra/php-daemon.png?branch=master)](https://travis-ci.org/vvondra/php-daemon)
+
 If you're comfortable with PHP and want to have a PHP script running as a daemon (meaning you can leave it running in the background, stop, restart it and check it's status) this class provides a basic implementation of the necessary features.
 
 Running a script as a daemon can be more convenient than a CRON triggered task and you can be sure it will be running in only one process at a time..
