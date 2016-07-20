@@ -29,7 +29,7 @@ abstract class Daemon {
 	public function start() {
 
 		$pid = $this->getPidFromPidfile();
-        $status = static::isProcessRunning($this->getPidFromPidfile());
+        $status = static::isProcessRunning($pid);
         if(!$status){
             $this->deletePidFile();
         } elseif ($pid > 0) {

@@ -8,10 +8,7 @@ class DaemonTest extends PHPUnit_Framework_TestCase {
 
 	static protected $className = 'PHPDaemon\\Daemon';
 
-	/**
-	 * @expectedException \PHPDaemon\DaemonException
-	 */
-	public function testStartAlreadyRunning() {
+    public function testStartAlreadyRunning() {
 		$daemon = $this->getMockBuilder(self::$className)->setMethods(array('getPidFromPidfile'))->getMockForAbstractClass();
 		$daemon->expects($this->once())->method('getPidFromPidfile')->will($this->returnValue(1));
 		$daemon->start();
