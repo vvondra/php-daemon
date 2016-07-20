@@ -29,8 +29,10 @@ abstract class Daemon {
 	public function start() {
 
 		$pid = $this->getPidFromPidfile();
-
-		if ($pid > 0) {
+        $status = static::isProcessRunning($this->getPidFromPidfile());
+        if(!$status){
+            $this->deletePidFile();
+        } elseif ($pid > 0) {
 			throw new DaemonException(sprintf("pidfile %s already exist.\nDaemon already running?\n", $this->getPidFilename()));
 		}
 
